@@ -57,7 +57,14 @@ int main(){
 	//================== ACIMA DA MÉDIA ========================//
 	cout << "\n\n\n- Notas acima da media: \n";
 	for(int i=0; i < sizeof(notas)/4; i++){
-		if(notas[i] > (Soma/qtd))
+		if(notas[i] >= (Soma/qtd))
+			cout << "\n " << notas[i];
+	}
+	
+	//================== ABAIXO DA MÉDIA ========================//
+	cout << "\n\n\n- Notas abaixo da media: \n";
+	for(int i=0; i < sizeof(notas)/4; i++){
+		if(notas[i] < (Soma/qtd))
 			cout << "\n " << notas[i];
 	}
 	
