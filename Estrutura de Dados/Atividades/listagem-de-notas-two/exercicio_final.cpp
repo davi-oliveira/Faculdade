@@ -29,7 +29,6 @@ int qtdAlunos()
 
 int main()
 {
-
 	//=============== VARIAVEIS ============================//
 	float maior, menor, mediaFacul;
 	int qtdNotas, somaIdade = 0;
