@@ -45,21 +45,24 @@ void imprimir(int vetor[], int qtdNum){
 
 void BubleSort(int vetor[], int qtdNum){
 	int aux = 0;
+	int operacoes = 0;
 	
-	for(int n=0; n < qtdNum; n++){
-		for(int i=0; i< qtdNum; i++){
-			if(vetor[i] > vetor[i+1]){
-				aux = vetor[i+1];
-				vetor[i+1] = vetor[i];
-				vetor[i] = aux;
+	for(int i=0; i < qtdNum-1; i++){
+		for(int j=0; j < qtdNum-1-i; j++){
+			if(vetor[j] > vetor[j+1]){
+				aux = vetor[j];
+				vetor[j] = vetor[j+1];
+				vetor[j+1] = aux;
+				operacoes++;
 			}
 		}
 	}
 	
-	cout << "O vetor foi organizado em ordem crescente usando BubleSort. \n";
+	cout << "O vetor foi organizado em ordem crescente usando BubleSort. Foram realizadas " << operacoes << " trocas";
 }
 
 void SelectionSort(int vetor[], int qtdNum){
+	int operacoes;
     for (int i = 0; i < qtdNum - 1; i++) {
         int min_idx = i;
         for (int j = i + 1; j < qtdNum; j++) {
@@ -112,14 +115,10 @@ void QuickSort(int arr[], int low, int high) {
         QuickSort(arr, low, pi - 1);
         QuickSort(arr, pi + 1, high);
     }
-
-	cout << "O vetor foi organizado em ordem crescente usando QuickSort. \n";
 }
 
 
-void Baguncar(int vetor[], int qtdNum){
-    srand(time(NULL));
-    
+void Baguncar(int vetor[], int qtdNum){,.,    
     for (int i = 0; i < qtdNum - 1; i++) {
         int j = rand() % (qtdNum - i) + i;
         int temp = vetor[i];
@@ -127,7 +126,7 @@ void Baguncar(int vetor[], int qtdNum){
         vetor[j] = temp;
     }
 
-	cout << "O vetor foi bagunçado. \n";
+	cout << "O vetor foi baguncado. \n";
 }
 
 int showMenu(){
@@ -167,9 +166,14 @@ int main(){
 			case 5: BubleSort(vetor, qtdNum); break;
 			case 6: SelectionSort(vetor, qtdNum); break;
 			case 7: InsertionSort(vetor, qtdNum); break;
-			case 8: QuickSort(vetor, 0, qtdNum); break;
+			case 8: {
+				QuickSort(vetor, 0, qtdNum); break;
+				cout << "O vetor foi organizado em ordem crescente usando QuickSort. \n";
+				break;
+			}
 			case 9: Baguncar(vetor, qtdNum); break;	
 			case 10: continuar = false;
+			default: cout << "Opcao Invalida\n";
 		}
 	}while(continuar==true);
 	return 0;
